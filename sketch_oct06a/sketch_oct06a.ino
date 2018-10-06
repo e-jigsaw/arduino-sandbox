@@ -1,12 +1,20 @@
+#include "Keyboard.h"
+
+const int inputPin = 3;
+const int ledPin = 13;
+
 void setup() {
-  pinMode(3, INPUT);
-  pinMode(13, OUTPUT);
+  pinMode(inputPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Keyboard.begin();
 }
 
 void loop() {
-  if (digitalRead(3) == HIGH) {
-    digitalWrite(13, HIGH);
+  if (digitalRead(inputPin) == HIGH) {
+    digitalWrite(ledPin, HIGH);
+    Keyboard.press(0x61);
   } else {
-    digitalWrite(13, LOW);
+    digitalWrite(ledPin, LOW);
+    Keyboard.release(0x61);
   }
 }
